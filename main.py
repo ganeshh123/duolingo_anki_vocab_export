@@ -6,7 +6,6 @@ def main():
     duolingo_bot = DuolingoBot()
     
     try:
-        duolingo_bot.login()
         duolingo_bot.navigate_to_words()
         duolingo_bot.load_full_vocab()
 
@@ -17,9 +16,9 @@ def main():
 
         for word in words:
             try:
-                spanish_content = word.find_element(By.TAG_NAME, 'h3')
+                language_content = word.find_element(By.TAG_NAME, 'h3')
                 english_translation = word.find_element(By.TAG_NAME, 'p')
-                create_note(duolingo_bot.credentials['deckname'], english_translation.text, spanish_content.text)
+                create_note(duolingo_bot.credentials['deckname'], english_translation.text, language_content.text)
             except Exception as e:
                 print("Error accessing word content:", e)
 
