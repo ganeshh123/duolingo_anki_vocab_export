@@ -9,15 +9,16 @@ from selenium.webdriver.support import expected_conditions as EC
 class DuolingoBot:
     def __init__(self):
         self.driver = self.start_driver()
-        self.credentials = self.load_credentials()
         self.load_cookies()
 
     def start_driver(self):
         options = uc.ChromeOptions()
         options.headless = False  # Set to True for headless mode
+        config = configparser.ConfigParser()
+        config.read('config.cfg')
 
         # Load Chrome path from config
-        chrome_path = self.config.get('Chrome', 'chrome_path', fallback="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
+        chrome_path = config.get('Chrome', 'chrome_path', fallback="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 
         try:
             return uc.Chrome(options=options, browser_executable_path=chrome_path)

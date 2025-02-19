@@ -31,10 +31,10 @@ copy(JSON.stringify(document.cookie.split('; ').map(c => {
 ### Set up the python environment and install packages:
 
 ```bash
-python3 -m venv myvenv
-chmod +x ./myvenv/bin/activate
-./myvenv/bin/activate
-./myvenv/bin/pip3 install -r requirements.txt
+python3 -m venv venv
+chmod +x ./venv/bin/activate
+./venv/bin/activate
+./venv/bin/pip3 install -r requirements.txt
 ```
 
 
@@ -43,7 +43,7 @@ chmod +x ./myvenv/bin/activate
 To run the script, run the following command:
 
 ```bash
-./myvenv/bin/python3 main.py
+./venv/bin/python3 main.py
 ```
 
 The script will automatically navigate to the Duolingo practice hub and extract all the words from the vocabulary list. It will then create a new deck with the name specified in the `deckname` field of the [config.ini](./config.ini) file and add the words to the deck. The script will then close the browser and exit.
